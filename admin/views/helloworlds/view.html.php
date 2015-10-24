@@ -96,6 +96,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
       {
          JToolbarHelper::publish('helloworlds.publish', 'JTOOLBAR_PUBLISH', true);
          JToolbarHelper::unpublish('helloworlds.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+         JToolbarHelper::archiveList('helloworlds.archive');
       }
 
       if ($this->state->get('filter.published') == -2 && $this->canDo->get('core.delete'))
