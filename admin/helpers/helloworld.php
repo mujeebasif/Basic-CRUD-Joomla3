@@ -66,8 +66,13 @@ abstract class HelloWorldHelper
          $assetName = 'com_helloworld.message.'.(int) $messageId;
       }
 
-      $actions = JAccess::getActions('com_helloworld', 'component');
+      //$actions = JAccess::getActions('com_helloworld', 'component');
+      $actions = JAccess::getActionsFromFile(
+            JPATH_ADMINISTRATOR . '/components/com_helloworld/access.xml',
+            "/access/section[@name='component']/"
+      );
 
+      if (!empty($actions))
       foreach ($actions as $action) {
          $result->set($action->name, JFactory::getUser()->authorise($action->name, $assetName));
       }
